@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Barbearia do Roberval</title>
+    <style>
+      /* Reset básico */
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Arial", sans-serif;
+        background-color: #f4f4f4;
+        color: #333;
+        line-height: 1.6;
+      }
+
+      header {
+        background: url("./image/fundo.avif") no-repeat center center/cover;
+        color: #fff;
+        position: relative;
+        width: 100%;
+        height: 500px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        overflow: hidden;
+        z-index: 10;
+      }
+
+      nav {
+        position: absolute;
+        top: 20px;
+        left: 10%; /* Move os links para a esquerda */
+        transform: translateX(-10%); /* Ajusta o alinhamento dos links */
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 80%; /* Ajusta a largura do nav */
+        max-width: 1200px;
+        z-index: 15;
+        padding: 0 20px;
+      }
+
+      nav img {
+        height: 230px;
+        width: auto;
+      }
+
+      nav ul {
+        list-style: none;
+        display: flex;
+        gap: 20px;
+      }
+
+      nav ul li a {
+        color: #fff;
+        text-decoration: none;
+        padding: 10px 20px;
+        background-color: #3b82f6;
+        border-radius: 5px;
+        transition: background-color 0.3s ease;
+      }
+
+      nav ul li a:hover,
+      nav ul li a.active {
+        background-color: #2563eb;
+      }
+
+      /* Estilo para o menu hambúrguer */
+      .menu-toggle {
+        display: none;
+        flex-direction: column;
+        cursor: pointer;
+        margin-left: auto;
+      }
+
+      .menu-toggle div {
+        width: 40px;
+        height: 4px;
+        background-color: #fff;
+        margin: 5px;
+        transition: transform 0.3s ease;
+      }
+
+      .menu-toggle.open div:nth-child(1) {
+        transform: rotate(45deg) translate(5px, 5px);
+      }
+
+      .menu-toggle.open div:nth-child(2) {
+        opacity: 0;
+      }
+
+      .menu-toggle.open div:nth-child(3) {
+        transform: rotate(-45deg) translate(5px, -5px);
+      }
+
+      @media (max-width: 768px) {
+        nav ul {
+          display: none;
+          flex-direction: column;
+          width: 100%;
+          background-color: rgba(0, 0, 0, 0.7);
+          position: absolute;
+          top: 60px;
+          left: 0;
+          text-align: center;
+          padding: 20px 0;
+          gap: 0;
+        }
+
+        nav ul.open {
+          display: flex;
+        }
+
+        .menu-toggle {
+          display: flex;
+        }
+
+        header .content {
+          padding-top: 60px;
+        }
+      }
+
+      .hero {
+        padding: 50px 20px;
+        text-align: center;
+      }
+
+      .hero h1 {
+        font-size: 2.5rem;
+        margin-bottom: 20px;
+      }
+
+      .hero p {
+        font-size: 1.2rem;
+        margin-bottom: 30px;
+      }
+
+      .btn {
+        background-color: #10b981;
+        color: #fff;
+        padding: 12px 24px;
+        text-decoration: none;
+        border-radius: 8px;
+        transition: background-color 0.3s ease;
+        font-size: 1.2rem;
+        margin-top: 20px; /* Espaço entre o parágrafo e o botão */
+      }
+
+      .btn:hover {
+        background-color: #059669;
+      }
+
+      .services {
+        background-color: #fff;
+        padding: 50px 20px;
+        text-align: center;
+      }
+
+      .services h3 {
+        font-size: 2rem;
+        margin-bottom: 40px;
+        color: #f59e0b;
+      }
+
+      .service-list {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px;
+        justify-content: center;
+      }
+
+      .service-item {
+        width: calc(33.333% - 20px); /* Considerando o gap */
+        margin-bottom: 30px;
+        background-color: #f3f4f6;
+        padding: 20px;
+        border-radius: 8px;
+        transition: transform 0.3s ease;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      }
+
+      .service-item:hover {
+        transform: scale(1.05);
+      }
+
+      .service-item img {
+        width: 100%;
+        border-radius: 8px;
+      }
+
+      .service-item h4 {
+        margin: 15px 0 10px 0;
+        font-size: 1.5rem;
+        color: #f59e0b;
+      }
+
+      .service-item p {
+        font-size: 1rem;
+        color: #6b7280;
+      }
+
+      footer {
+        background-color: #1e3a8a;
+        color: #fff;
+        text-align: center;
+        padding: 20px 0;
+        margin-top: 50px;
+      }
+
+      footer a {
+        color: white;
+        text-decoration: none;
+      }
+
+      footer a:hover {
+        text-decoration: underline;
+      }
+
+      @media (max-width: 768px) {
+        .hero h1 {
+          font-size: 2rem;
+        }
+
+        .hero p {
+          font-size: 1rem;
+        }
+
+        .btn {
+          font-size: 1rem;
+          padding: 10px 20px;
+        }
+
+        .service-item {
+          width: calc(50% - 20px); /* Considerando o gap */
+        }
+      }
+
+      @media (max-width: 480px) {
+        header {
+          height: auto;
+          padding: 20px;
+          text-align: center;
+        }
+
+        nav img {
+          height: 80px;
+        }
+
+        nav ul li a {
+          display: block;
+          margin: 10px 0;
+          padding: 10px 15px;
+        }
+
+        .hero h1 {
+          font-size: 1.8rem;
+        }
+
+        .hero p {
+          font-size: 0.9rem;
+        }
+
+        .btn {
+          font-size: 1rem;
+          padding: 8px 16px;
+        }
+
+        .service-item {
+          width: 100%;
+          margin-bottom: 20px;
+        }
+
+        .service-item h4 {
+          font-size: 1.3rem;
+        }
+
+        .services h3 {
+          font-size: 1.8rem;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <header>
+      <div class="content">
+        <br />
+        <h1>Transforme seu Visual com o Irmão do Corte!</h1>
+        <p>Agende seu horário agora e nos te atendemos na sua casa...</p>
+        <br />
+        <a href="agendamento.html" class="btn">Agendar Agora</a>
+      </div>
+      <nav>
+        <img src="./image/log2.png" alt="Logo Barbearia do Roberval" />
+        <div class="menu-toggle" id="menu-toggle">
+          <div></div>
+          <div></div>
+          <div></div>
+        </div>
+        <ul id="menu">
+          <li><a href="./index.html" class="active">Inicio</a></li>
+          <li>
+            <a href="https://www.instagram.com/ROBERVALFERNANDOSANTANA6470"
+              >Instagram</a
+            >
+          </li>
+          <li><a href="./agendamento.html">Agendar</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <section id="services" class="services">
+      <h3>Nossos Serviços</h3>
+      <div class="service-list">
+        <div class="service-item">
+          <img src="./image/1-corte.webp" alt="Serviço 1" />
+          <h4>Corte de Cabelo</h4>
+          <p>
+            Transforme seu visual com um corte de cabelo profissional e moderno.
+          </p>
+        </div>
+        <div class="service-item">
+          <img src="./image/barba.jpg" alt="Serviço 2" />
+          <h4>Barba</h4>
+          <p>Mantenha sua barba impecável com um atendimento especializado.</p>
+        </div>
+        <div class="service-item">
+          <img src="./image/sobrancelha.jpg" alt="Serviço 3" />
+          <h4>Sobrancelhas</h4>
+          <p>
+            Cuide das suas sobrancelhas com um design que realça sua beleza.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <footer class="bg-blue-800 text-white py-4">
+      <div class="container mx-auto text-center">
+        <p>Todos os direitos reservados ao Irmão do Corte</p>
+      </div>
+      <a
+        href="https://www.linkedin.com/in/jorivaldo-azevedo?trk=contact-info"
+        class="text-white hover:underline"
+      >
+        Desenvolvedor do App - Jorivaldo Azevedo
+      </a>
+    </footer>
+
+    <script>
+      document
+        .getElementById("menu-toggle")
+        .addEventListener("click", function () {
+          const menu = document.getElementById("menu");
+          menu.classList.toggle("open");
+          this.classList.toggle("open");
+        });
+    </script>
+  </body>
+</html>

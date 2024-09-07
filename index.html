@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Página Inicial</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #1e3a8a; /* Cor de fundo preta */
+            font-family: 'Roboto', sans-serif;
+        }
+
+        .hero-section {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+
+        .hero-section img {
+            max-width: 150px; /* Tamanho inicial da logo */
+            transition: max-width 0.3s ease;
+        }
+
+        .hero-section h1 {
+            color: white;
+            font-size: 1.5rem; /* Tamanho inicial do texto */
+            margin: 1rem 0;
+            transition: font-size 0.3s ease;
+        }
+
+        .hero-section .btn {
+            background-color: #10b981; /* Cor do botão verde */
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.5rem;
+            font-size: 1rem;
+            text-decoration: none;
+            display: inline-block;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        .hero-section .btn:hover {
+            background-color: #059669; /* Cor do botão verde mais escuro no hover */
+        }
+
+        @media (min-width: 768px) {
+            .hero-section img {
+                max-width: 200px; /* Tamanho maior da logo em telas médias e grandes */
+            }
+
+            .hero-section h1 {
+                font-size: 2rem; /* Tamanho maior do texto em telas médias e grandes */
+            }
+
+            .hero-section .btn {
+                font-size: 1.25rem; /* Tamanho maior do botão em telas médias e grandes */
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .hero-section img {
+                max-width: 250px; /* Tamanho ainda maior da logo em telas grandes */
+            }
+
+            .hero-section h1 {
+                font-size: 2.5rem; /* Tamanho ainda maior do texto em telas grandes */
+            }
+
+            .hero-section .btn {
+                font-size: 1.5rem; /* Tamanho ainda maior do botão em telas grandes */
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="hero-section">
+        <h1> Seja bem-vindo, agende online!</h1>
+        <img src="./image/log2.png" alt="Logo da Página Inicial">
+        <br>
+        <a href="index1.html" class="btn">Avançar</a>
+    </div>
+</body>
+</html>
